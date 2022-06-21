@@ -1,4 +1,6 @@
 import json
+import urllib
+
 import requests
 import Main
 
@@ -17,12 +19,19 @@ def SearchProduct(title):
         print("")
         print("## Available commands ##")
         print("home \t Go back to home menu")
-        print("add \t Add an article in shopping cart")
+        print("search \t Search another work")
+        print("exit \t Exit the programm")
         print("")
         command = input("Please enter a command: ")
         print("")
         if command == "home":
             Main.main()
+        elif command == "search":
+            print("Please type an artist or a title")
+            title = urllib.parse.quote(input('Enter an artist or a title: '), safe='')  # safe -> include /
+            SearchProduct(title)
+        elif command == "exit":
+            quit()
 
 
 def create_table(data, count):

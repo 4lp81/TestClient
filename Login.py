@@ -1,5 +1,7 @@
 import requests
 
+import Session
+
 
 def login():
     print("")
@@ -11,5 +13,7 @@ def login():
     try:
         json = response.json()
         print(json)
+        Session.session.loggedin = bool(0)
     except:
         print("Login failed")
+
