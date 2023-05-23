@@ -8,7 +8,7 @@ import Main
 def SearchEvent(title):
     is_exit = bool(0)
     while is_exit == bool(0):
-        uri = "http://localhost:8080/backendTest-1.0-SNAPSHOT/api/v1/event/searchEvent?username=aar9086&password=test&titleOrInterpret=" + title
+        uri = "http://localhost:8080/backendTest-1.0-SNAPSHOT/api/v1/event/searchEvent?username=aar9086&password=test&searchString=" + title
 
         url = requests.get(uri)
         text = url.text
