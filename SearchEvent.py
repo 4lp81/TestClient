@@ -5,10 +5,10 @@ import requests
 import Main
 
 
-def SearchProduct(title):
+def SearchEvent(title):
     is_exit = bool(0)
     while is_exit == bool(0):
-        uri = "http://localhost:8080/jazzers-backend-1.0-SNAPSHOT/api/v1/product/searchDigital?username=cpe2877&password=password&titleOrInterpret=" + title
+        uri = "http://localhost:8080/backendTest-1.0-SNAPSHOT/api/v1/event/searchEvent?username=aar9086&password=test&titleOrInterpret=" + title
 
         url = requests.get(uri)
         text = url.text
@@ -27,34 +27,40 @@ def SearchProduct(title):
         if command == "home":
             Main.main()
         elif command == "search":
-            print("Please type an artist or a title")
+            print("Please type an artist or a event")
             title = urllib.parse.quote(input('Enter an artist or a title: '), safe='')  # safe -> include /
-            SearchProduct(title)
+            SearchEvent(title)
         elif command == "exit":
             quit()
 
 
 def create_table(data, count):
-    print("{:10} {:<40} {:<30} {:<20} {:<20} {:<10} {:<10} ".format(
+    print("{:10} {:<40} {:<30} {:<20} {:<20} {:<10} {:<10} {:<10} {:<10} {:<10} ".format(
         'Position',
-        'ProductId',
-        'Title',
-        'Interpret',
-        'Medium',
-        'Genre',
-        'Price'
+        'eventId',
+        'title',
+        'location',
+        'description',
+        'date',
+        'price',
+        'time',
+        'availableSeat',
+        'availableStanding'
     ))
 
 
     for x in range(count):
-        work = data[x]
+        event = data[x]
 
         print("{:9} {:<40} {:<30} {:<20} {:<20} {:<10} {:<10}".format(
-            x+1,
-            work['productId'],
-            work['title'],
-            work['interpret'],
-            work['medium'],
-            work['genre'],
-            work['price']
+            x + 1,
+            event['eventId'],
+            event['title'],
+            event['location'],
+            event['description'],
+            event['date'],
+            event['price'],
+            event['time'],
+            event['availableSeat'],
+            event['availableStanding']
         ))

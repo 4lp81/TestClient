@@ -2,7 +2,7 @@
 import urllib
 
 import Login
-import SearchProduct
+import SearchEvent
 import Session
 
 
@@ -20,7 +20,7 @@ def main():
         if user_input == "search":
             print("Please type an artist or a title")
             title = urllib.parse.quote(input('Enter an artist or a title: '), safe='')  # safe -> include /
-            SearchProduct.SearchProduct(title)
+            SearchEvent.SearchEvent(title)
         elif user_input == "login":
             if Session.session.loggedin == bool(0):
                 print("You are currently in a session")
